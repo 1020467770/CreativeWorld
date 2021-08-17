@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">创意世界</string>
+
+    <!--BottomNavigationDrawer-->
+    <string name="navigation_home_page">首页</string>
+    <string name="navigation_favorite">收藏</string>
+    <string name="navigation_upload_videos">我的视频</string>
+    <string name="navigation_community">社区</string>
+
+    <string name="email_card_transition_name">email_card_%1$s</string>
+    <string name="email_card_detail_transition_name">email_card_detail</string>
+
+    <!--VideoDetailFragment-->
+    <string name="action_follow_user">关注</string>
+
+    <!--VideoBottomNavigationMenu-->
+    <string name="menu_item_share">分享</string>
+    <string name="menu_item_add_to_favorite">收藏</string>
+    <string name="menu_item_no_interest">不感兴趣</string>
+    <string name="prompt_email">邮箱</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_sign_in">登录</string>
+    <string name="invalid_email">邮箱格式有误</string>
+    <string name="login_failed">登录失败，请重新尝试</string>
+    <string name="go_to_register">注册</string>
+    <string name="action_register">注册</string>
+    <string name="prompt_username">用户名</string>
+    <string name="invalid_username">用户名无效</string>
+    <string name="register_failed">注册失败</string>
+    <string name="register_success">注册成功</string>
+    <string name="copy_forbid_presentation">未经授权禁止转载</string>
+    <string name="uploader_fans_number">%1$s粉丝</string>
+    <string name="uploader_videos_number">%1$s视频</string>
+
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--副主题颜色的表现颜色-->
+    <attr name="colorPrimarySurfaceVariant" format="color" />
+
+    <!--安卓自带的线性插值引用style-->
+    <attr name="motionInterpolatorPersistent" format="reference" />
+    <attr name="motionInterpolatorIncoming" format="reference" />
+    <attr name="motionInterpolatorOutgoing" format="reference" />
+
+    <!--自定义的BottomNavigation的theme和style-->
+    <attr name="bottomNavigationDrawerStyle" format="reference" />
+    <attr name="bottomNavigationDrawerNavigationViewTheme" format="reference" />
+
+    <!--自定义FoldableTextView联系xml需要的style-->
+    <declare-styleable name="FoldableTextView">
+        <attr name="ftv_text" format="string" />
+        <attr name="defaultMaxLineCounts" format="integer" />
+    </declare-styleable>
+
+</resources>

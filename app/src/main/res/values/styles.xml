@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--NavigationView-->
+    <style name="Widget.Sqh.NavigationView" parent="Widget.MaterialComponents.NavigationView">
+        <item name="insetForeground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="elevation">0dp</item>
+        <item name="itemTextAppearance">?attr/textAppearanceBody2</item>
+    </style>
+
+    <style name="Widget.Sqh.Chip.Entry" parent="Widget.MaterialComponents.Chip.Entry">
+        <item name="closeIconSize">0dp</item>
+        <item name="closeIconEnabled">false</item>
+        <item name="chipIconSize">@dimen/chip_icon_diameter</item>
+        <item name="chipStartPadding">0dp</item>
+        <item name="android:checkable">false</item>
+    </style>
+
+    <!--定义一些形状style-->
+    <style name="ShapeAppearance.Sqh.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/sqh_small_component_corner_radius</item>
+    </style>
+
+    <style name="ShapeAppearance.Sqh.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/sqh_medium_component_corner_radius</item>
+    </style>
+
+    <style name="ShapeAppearance.Sqh.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/sqh_large_component_corner_radius</item>
+    </style>
+
+    <!--TextAppearance的Style-->
+    <style name="TextAppearance.Sqh.Overline.Pressed" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="android:textColor">@color/color_pressed_textview</item>
+    </style>
+
+    <dimen name="sqh_small_component_corner_radius">24dp</dimen>
+    <dimen name="sqh_medium_component_corner_radius">0dp</dimen>
+    <dimen name="sqh_large_component_corner_radius">12dp</dimen>
+</resources>

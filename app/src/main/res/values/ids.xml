@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--存放项目中使用到的公用id-->
+<resources>
+    <item name="sqh_translation_x" type="id"/>
+    <item name="sqh_translation_y" type="id"/>
+    <item name="sqh_translation_z" type="id"/>
+    <item name="sqh_scale_x" type="id"/>
+    <item name="sqh_scale_y" type="id"/>
+    <item name="sqh_rotation" type="id"/>
+    <item name="sqh_rotation_x" type="id"/>
+    <item name="sqh_rotation_y" type="id"/>
+    <item name="sqh_x" type="id"/>
+    <item name="sqh_y" type="id"/>
+    <item name="sqh_z" type="id"/>
+    <item name="sqh_alpha" type="id"/>
+    <item name="sqh_scroll_x" type="id"/>
+    <item name="sqh_scroll_y" type="id"/>
+
+    <item name="tag_system_window_inset_top" type="id"/>
+    <item name="tag_view_top_snapshot" type="id"/>
+</resources>

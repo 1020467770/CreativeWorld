@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="cn.sqh.creativeworld.R" />
+
+        <import type="cn.sqh.creativeworld.core.data.Video" />
+
+        <import type="androidx.lifecycle.LiveData"/>
+
+        <import type="cn.sqh.creativeworld.core.data.Resource" />
+
+        <variable
+            name="video"
+            type="LiveData&lt;Resource&lt;Video>>" />
+
+
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:transitionName="@string/video_detail_transition_name">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/video_detail_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+                android:id="@+id/video_player"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="4:3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--<ImageView
+                android:id="@+id/video_place_area"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:foreground="@drawable/video_detail_placeholder_scrim"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="4:3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/avatar_0" />-->
+
+            <!--<androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize"
+                app:contentInsetStartWithNavigation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:marginTopSystemWindowInsets="@{true}"
+                app:navigationIcon="@drawable/ic_back" />-->
+
+            <!--<ImageButton
+                android:id="@+id/play_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/actionBarItemBackground"
+                app:layout_constraintBottom_toBottomOf="@+id/video_player"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/video_player"
+                app:srcCompat="@drawable/ic_play_video_48" />-->
+
+            <ImageView
+                android:id="@+id/video_uploader"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="@drawable/profile_outline_clickable"
+                app:glideCenterCrop="@{true}"
+                app:glideCircularCrop="@{true}"
+                app:glideSrc="@{R.drawable.avatar_10}"
+                app:layout_constraintBottom_toBottomOf="@id/video_player"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/video_player" />
+
+            <TextView
+                android:id="@+id/tv_uploader_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_0_5"
+                android:gravity="center"
+                android:text="@{video.data.uploader}"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="?attr/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/video_uploader"
+                tools:text="zhangsan的屁屁" />
+
+            <FrameLayout
+                android:id="@+id/sub_profile_area"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/grid_1_5"
+                android:foreground="@drawable/profile_outline_clickable"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/video_player" />
+
+            <TextView
+                android:id="@+id/sub_name_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_2"
+                android:layout_marginBottom="@dimen/grid_1"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/sub_profile_area"
+                app:layout_constraintStart_toEndOf="@id/sub_profile_area"
+                tools:text="zhangsan的屁屁" />
+
+            <TextView
+                android:id="@+id/tv_fans_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_2"
+                android:text="@{@string/uploader_fans_number(video.data.owner.fansCounts)}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_video_num"
+                tools:text="354粉丝" />
+
+            <TextView
+                android:id="@+id/tv_video_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="@dimen/grid_1"
+                android:text="@{@string/uploader_videos_number(video.data.owner.videoCounts)}"
+                app:layout_constraintStart_toEndOf="@+id/tv_fans_num"
+                app:layout_constraintTop_toBottomOf="@+id/sub_name_area"
+                tools:text="16视频" />
+
+
+            <CheckedTextView
+                android:id="@+id/ctv_follow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="@dimen/grid_1"
+                android:background="@drawable/action_follow_foreground"
+                android:clickable="true"
+                android:drawableStart="@drawable/asl_follow_unfollow"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/grid_1"
+                android:paddingVertical="@dimen/grid_0_5"
+                android:text="@string/action_follow_user"
+                android:textColor="@color/color_action_follow_checked_textview"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_video_num"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginTop="@dimen/grid_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_video_num"
+                app:tabGravity="start"
+                app:tabIndicatorColor="#ff678f"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorHeight="2dp"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="#ff678f">
+
+            </com.google.android.material.tabs.TabLayout>
+
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vp_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tab_navigation">
+
+            </androidx.viewpager2.widget.ViewPager2>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

@@ -1,0 +1,47 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.Reply.DayNight" parent="Theme.CreativeWorld"/>
+
+    <!-- Base application theme. -->
+    <style name="Theme.CreativeWorld" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/sqh_blue_700</item>
+        <item name="colorPrimaryVariant">@color/sqh_blue_800</item>
+        <item name="colorSecondary">@color/sqh_orange_500</item>
+        <item name="colorSecondaryVariant">@color/sqh_orange_400</item>
+
+        <item name="android:colorBackground">@color/sqh_blue_50</item>
+        <item name="colorSurface">@color/sqh_white_50</item>
+        <!--副主题颜色的style-->
+        <item name="colorPrimarySurfaceVariant">?attr/colorPrimaryVariant</item>
+        <item name="colorError">@color/sqh_red_400</item>
+
+        <item name="colorOnPrimary">@color/sqh_white_50</item>
+        <item name="colorOnSecondary">@color/sqh_black_900</item>
+        <item name="colorOnBackground">@color/sqh_black_900</item>
+        <item name="colorOnSurface">@color/sqh_black_900</item>
+        <item name="colorOnError">@color/sqh_black_900</item>
+
+        <item name="scrimBackground">@color/sqh_white_50_alpha_060</item>
+        <item name="android:statusBarColor">@color/sqh_blue_50_alpha_060</item>
+        <item name="android:navigationBarColor">@color/nav_bar</item>
+
+        <!--设置圆角appearance-->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Sqh.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Sqh.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Sqh.LargeComponent</item>
+
+        <!--线性插值器-->
+        <item name="motionInterpolatorPersistent">@android:interpolator/fast_out_slow_in</item>
+        <item name="motionInterpolatorIncoming">@android:interpolator/decelerate_cubic</item>
+        <item name="motionInterpolatorOutgoing">@android:interpolator/accelerate_cubic</item>
+
+        <!--设置一些自定义style-->
+        <item name="bottomAppBarStyle">@style/Widget.MaterialComponents.BottomAppBar.PrimarySurface</item>
+        <item name="bottomSheetStyle">@style/Widget.MaterialComponents.BottomSheet.Modal</item>
+        <item name="navigationViewStyle">@style/Widget.Sqh.NavigationView</item>
+        <item name="chipStyle">@style/Widget.Sqh.Chip.Entry</item>
+    </style>
+
+
+</resources>

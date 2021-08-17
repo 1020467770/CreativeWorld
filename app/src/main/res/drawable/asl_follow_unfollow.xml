@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/follow"
+        android:drawable="@drawable/ic_plus_24"
+        android:state_checked="false"/>
+
+    <item
+        android:id="@+id/unfollow"
+        android:drawable="@drawable/ic_checked_24"
+        android:state_checked="true"/>
+
+    <transition
+        android:fromId="@id/follow"
+        android:toId="@id/unfollow"
+        android:drawable="@drawable/avd_follow_to_unfollow"/>
+
+    <transition
+        android:fromId="@id/unfollow"
+        android:toId="@id/follow"
+        android:drawable="@drawable/avd_unfollow_to_follow"/>
+
+</animated-selector>

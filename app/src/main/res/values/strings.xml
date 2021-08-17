@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">CreativeWorld</string>
+
+    <!--BottomAppBar-->
+
+
+    <!--BottomNavigationDrawer-->
+    <string name="navigation_home_page">Index</string>
+    <string name="navigation_favorite">Favorite</string>
+    <string name="navigation_upload_videos">MyVideos</string>
+    <string name="navigation_community">Community</string>
+
+    <string name="email_card_transition_name">email_card_%1$s</string>
+    <string name="email_card_detail_transition_name">email_card_detail</string>
+
+    <!--VideoDetailFragment-->
+    <string name="video_card_transition_name" translatable="false">video_card_%1$s</string>
+    <string name="video_detail_transition_name" translatable="false">video_detail_transition</string>
+    <string name="action_follow_user">Follow</string>
+    <string name="copy_forbid_presentation">Unauthorized reproduction is prohibited</string>
+    <string name="uploader_fans_number">%1$s Fans</string>
+    <string name="uploader_videos_number">%1$s Videos</string>
+
+    <!--VideoBottomNavigationMenu-->
+    <string name="menu_item_share">Share</string>
+    <string name="menu_item_add_to_favorite">Add To Favorite</string>
+    <string name="menu_item_no_interest">No Interest</string>
+
+    <!--LoginFragment -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="invalid_email">Not a valid email</string>
+    <string name="login_failed">Login failed</string>
+    <string name="go_to_register">Register</string>
+
+    <!--RegisterFragment-->
+    <string name="prompt_username">Username</string>
+    <string name="action_register">Register</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="register_failed">Register failed</string>
+    <string name="register_success">Register succeed</string>
+
+
+
+
+
+</resources>

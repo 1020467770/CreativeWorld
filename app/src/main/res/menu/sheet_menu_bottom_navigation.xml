@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_share"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_forward"
+        android:title="@string/menu_item_share" />
+
+    <item
+        android:id="@+id/menu_add_to_favorite"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_reply"
+        android:title="@string/menu_item_add_to_favorite" />
+
+    <item
+        android:id="@+id/menu_no_interest"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_reply_all"
+        android:title="@string/menu_item_no_interest" />
+
+</menu>

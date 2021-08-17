@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="cn.sqh.creativeworld.ui.home.HomeFragment"
+        android:label="HomeFragment">
+
+        <action
+            android:id="@+id/action_home_to_video_detail"
+            app:destination="@+id/videoDetailFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/composeFragment"
+        android:name="cn.sqh.creativeworld.ui.email.ComposeFragment"
+        android:label="ComposeFragment"></fragment>
+
+    <fragment
+        android:id="@+id/videoDetailFragment"
+        android:name="cn.sqh.creativeworld.ui.videoDetail.VideoDetailFragment"
+        android:label="VideoDetailFragment">
+        <argument
+            android:name="videoId"
+            app:argType="long" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@+id/homeFragment"
+        app:launchSingleTop="true"
+        app:popUpTo="@+id/navigation_graph"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/action_global_composeFragment"
+        app:destination="@+id/composeFragment" />
+</navigation>

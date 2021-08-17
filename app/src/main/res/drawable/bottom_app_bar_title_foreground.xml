@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ripple
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?attr/colorControlHighlight">
+    <!--上面的color的style代表着当按下时会有半透明的遮罩-->
+
+    <!--这里重载了遮罩的形状和颜色-->
+    <item android:id="@android:id/mask"
+        android:gravity="center_vertical"
+        android:height="40dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="24dp"/>
+            <solid android:color="#fff"/>
+        </shape>
+    </item>
+</ripple>
+

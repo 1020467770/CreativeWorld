@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="navFavoriteFolder"
+            type="cn.sqh.creativeworld.ui.bottomNav.NavigationModelItem.NavFavoriteFolder" />
+
+        <variable
+            name="navListener"
+            type="cn.sqh.creativeworld.ui.bottomNav.NavigationAdapter.NavigationAdapterListener" />
+
+    </data>
+
+    <TextView
+        android:id="@+id/nav_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navigation_drawer_menu_item_height"
+        android:background="?attr/selectableItemBackground"
+        android:drawablePadding="@dimen/grid_4"
+        android:ellipsize="end"
+        android:gravity="center_vertical|start"
+        android:lines="1"
+        android:onClick="@{() -> navListener.onNavFavoriteItemClicked(navFavoriteFolder)}"
+        android:paddingLeft="@dimen/grid_4"
+        android:paddingRight="@dimen/grid_4"
+        android:text="@{navFavoriteFolder.favoriteFolder}"
+        android:textAppearance="?attr/textAppearanceSubtitle1"
+        android:textColor="@color/color_on_primary_surface_middle_alpha"
+        app:drawableStartCompat="@drawable/ic_twotone_folder"
+        app:drawableTint="@color/color_on_primary_surface_middle_alpha"
+        tools:text="测试" />
+</layout>

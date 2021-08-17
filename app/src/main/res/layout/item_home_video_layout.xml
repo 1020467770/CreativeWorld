@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="cn.sqh.creativeworld.R" />
+
+        <variable
+            name="video"
+            type="cn.sqh.creativeworld.core.data.Video" />
+
+        <variable
+            name="clickListener"
+            type="cn.sqh.creativeworld.ui.home.VideoPreviewAdapter.VideoViewClickListener" />
+    </data>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/grid_0_5"
+        android:layout_marginVertical="@dimen/grid_0_25"
+        android:background="?attr/colorSecondary">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_video_preview_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:elevation="@dimen/elevation_4"
+            android:focusable="true"
+            android:onClick="@{(view)-> clickListener.onClick(view, video.id)}"
+            android:onLongClick="@{(view) ->clickListener.onLongPressed(video)}"
+            android:transitionName="@{@string/video_card_transition_name(video.id)}"
+            app:cardPreventCornerOverlap="false">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/grid_0_5">
+
+                <!--<com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+                    android:id="@+id/video_player"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintDimensionRatio="4:3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />-->
+
+
+                <ImageView
+                    android:id="@+id/video_preview_img"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintDimensionRatio="4:3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/avatar_0" />
+
+                <ImageView
+                    android:id="@+id/profile_img"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:foreground="@drawable/profile_outline"
+                    app:glideCenterCrop="@{true}"
+                    app:glideCircularCrop="@{true}"
+                    app:glideSrc="@{R.drawable.avatar_10}"
+                    app:layout_constraintBottom_toBottomOf="@id/video_preview_img"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/video_preview_img" />
+
+                <TextView
+                    android:id="@+id/uploader_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/grid_0_5"
+                    android:text="@{video.uploader}"
+                    android:textAppearance="?attr/textAppearanceSubtitle2"
+                    android:textColor="?attr/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profile_img"
+                    tools:text="测试uploader" />
+
+                <TextView
+                    android:id="@+id/video_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingHorizontal="@dimen/grid_2"
+                    android:text="@{video.name}"
+                    android:textAppearance="?attr/textAppearanceSubtitle1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/uploader_name"
+                    tools:text="过于真实，大家眼中的吴亦凡" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <ImageView
+                    android:id="@+id/icon_play_num"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_play_num"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_play_num"
+                    app:layout_constraintTop_toBottomOf="@id/video_name"
+                    app:srcCompat="@drawable/ic_television"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tv_play_num"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/grid_1"
+                    android:paddingVertical="@dimen/grid_2"
+                    android:paddingStart="@dimen/grid_0_5"
+                    android:text="@{String.valueOf(video.playNumber)}"
+                    android:textAppearance="?attr/textAppearanceSubtitle2"
+                    android:textColor="?attr/colorPrimary"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline"
+                    app:layout_constraintTop_toBottomOf="@id/video_name"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="233455" />
+
+                <ImageView
+                    android:id="@+id/icon_love_num"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_1"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_love_num"
+                    app:layout_constraintStart_toEndOf="@id/guideline"
+                    app:layout_constraintTop_toBottomOf="@id/video_name"
+                    app:srcCompat="@drawable/ic_love"
+                    app:tint="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tv_love_num"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/grid_2"
+                    android:paddingStart="@dimen/grid_0_5"
+                    android:text="@{String.valueOf(video.likerNumber)}"
+                    android:textAppearance="?attr/textAppearanceSubtitle2"
+                    android:textColor="?attr/colorPrimary"
+                    app:layout_constraintStart_toEndOf="@+id/icon_love_num"
+                    app:layout_constraintTop_toBottomOf="@id/video_name"
+                    tools:ignore="RtlSymmetry"
+                    tools:text="21345" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </FrameLayout>
+</layout>
