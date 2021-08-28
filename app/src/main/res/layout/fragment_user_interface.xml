@@ -51,7 +51,7 @@
                 android:focusable="true"
                 app:glideCenterCrop="@{true}"
                 app:glideCircularCrop="@{true}"
-                app:glideSrc="@{R.drawable.avatar_1}"
+                app:glideSrc="@{R.drawable.avatar_0}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:placeholder="@{@drawable/ic_profile_placeholder}" />

@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.recyclerview.widget.ConcatAdapter
 import cn.sqh.creativeworld.R
 import cn.sqh.creativeworld.core.data.TweetId
 import cn.sqh.creativeworld.databinding.FragmentTweetsBinding
@@ -36,13 +37,22 @@ class TweetsFragment : Fragment(), TweetRecyclerViewAdapter.TweetViewClickListen
     private lateinit var mBinding: FragmentTweetsBinding
     private val tweetsViewModel: TweetsPreviewViewModel by viewModels()
 
+    private val headerAdapter = TweetHeaderAdapter()
     private val tweetAdapter = TweetRecyclerViewAdapter(this)
+    private val concatAdapter = ConcatAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enterTransition = MaterialFadeThrough().apply {
             duration = resources.getInteger(R.integer.sqh_motion_duration_large).toLong()
         }
+        concatAdapter.addAdapter(headerAdapter)
+        concatAdapter.addAdapter(
+            tweetAdapter.withLoadStateHeaderAndFooter(
+                FooterAdapter(tweetAdapter),
+                FooterAdapter(tweetAdapter)
+            )
+        )
     }
 
     override fun onCreateView(
@@ -67,11 +77,12 @@ class TweetsFragment : Fragment(), TweetRecyclerViewAdapter.TweetViewClickListen
         }
         mBinding.run {
             tweetsRecyclerView.apply {
-                adapter = tweetAdapter
+                /*adapter = tweetAdapter
                     .withLoadStateHeaderAndFooter(
                         FooterAdapter(tweetAdapter),
                         FooterAdapter(tweetAdapter)
-                    )
+                    )*/
+                adapter = concatAdapter
             }
         }
     }

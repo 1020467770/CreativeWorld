@@ -24,7 +24,6 @@ import cn.sqh.creativeworld.databinding.ActivityMainBinding
 import cn.sqh.creativeworld.ui.bottomNav.*
 import cn.sqh.creativeworld.ui.bottomNav.sandwich.HalfCounterClockwiseRotateSlideAction
 import cn.sqh.creativeworld.ui.comment.CommentFragment
-import cn.sqh.creativeworld.ui.email.ComposeFragmentDirections
 import cn.sqh.creativeworld.ui.home.HomeFragmentDirections
 import cn.sqh.creativeworld.ui.upload.UploadVideoFragmentDirections
 import cn.sqh.creativeworld.utils.contentView
@@ -127,19 +126,6 @@ class MainActivity :
             }
         }
         val direction = UploadVideoFragmentDirections.actionGlobalUploadVideoFragment()
-        findNavController(R.id.nav_host_fragment).navigate(direction)
-    }
-
-    private fun navigateToCompose() {
-        currentNavigationFragment?.apply {
-            exitTransition = MaterialElevationScale(false).apply {
-                duration = 300.toLong()
-            }
-            reenterTransition = MaterialElevationScale(true).apply {
-                duration = 300.toLong()
-            }
-        }
-        val direction = ComposeFragmentDirections.actionGlobalComposeFragment()
         findNavController(R.id.nav_host_fragment).navigate(direction)
     }
 

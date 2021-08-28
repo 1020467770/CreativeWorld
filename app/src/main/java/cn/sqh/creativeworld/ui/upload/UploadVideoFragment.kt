@@ -124,7 +124,7 @@ class UploadVideoFragment : Fragment(), ActionUploadListener, ChooseVideoListene
             returnTransition = Slide().apply {
                 duration = resources.getInteger(R.integer.sqh_motion_duration_medium).toLong()
                 //只对CardView执行动画，背景会立即消失
-                addTarget(R.id.email_card_view)
+                addTarget(R.id.upload_video_card)
             }
         }
     }

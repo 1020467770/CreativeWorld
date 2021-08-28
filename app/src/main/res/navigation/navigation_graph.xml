@@ -19,11 +19,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/composeFragment"
-        android:name="cn.sqh.creativeworld.ui.email.ComposeFragment"
-        android:label="ComposeFragment"></fragment>
-
-    <fragment
         android:id="@+id/uploadVideoFragment"
         android:name="cn.sqh.creativeworld.ui.upload.UploadVideoFragment"
         android:label="UploadVideoFragment"

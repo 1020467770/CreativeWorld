@@ -43,4 +43,11 @@
     <!--UploadingVideoFragment-->
     <integer name="title_max_length">20</integer>
     <integer name="desc_max_length">200</integer>
+    
+    <!--Banner-->
+    <dimen name="tweets_header_banner_height">185dp</dimen>
+    <dimen name="banner_pic_reveal_width_left_side">30dp</dimen>
+    <dimen name="banner_pic_reveal_width_center">10dp</dimen>
+    <dimen name="banner_pic_page_margin">10dp</dimen>
+
 </resources>
