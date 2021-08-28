@@ -15,6 +15,7 @@ import androidx.transition.Slide
 import cn.sqh.creativeworld.R
 import cn.sqh.creativeworld.databinding.FragmentUploadViedoBinding
 import cn.sqh.creativeworld.utils.themeColor
+import com.blankj.utilcode.util.LogUtils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.target.Target
@@ -91,7 +92,7 @@ class UploadVideoFragment : Fragment(), ActionUploadListener, ChooseVideoListene
                                 mViewModel.setCoverPath(file.path)
                                 lifecycleScope.launch {
                                     withContext(Dispatchers.IO) {//在IO线程进行文件操作
-                                        val localFile = File(file.path)
+                                        val localFile = File(file.realPath)
                                         mViewModel.uploadingVideo.coverFile = localFile.readBytes()
                                     }
                                 }
@@ -161,7 +162,12 @@ class UploadVideoFragment : Fragment(), ActionUploadListener, ChooseVideoListene
 
     @InternalCoroutinesApi
     override fun onActionUploadVideo() {
+        mBinding.apply {
+            btnSend.isEnabled = false
+            loading.visibility = View.VISIBLE
+        }
         mViewModel.uploadVideo() {
+            mBinding.loading.visibility = View.GONE
             findNavController().navigateUp()
         }
     }
@@ -176,6 +182,9 @@ class UploadVideoFragment : Fragment(), ActionUploadListener, ChooseVideoListene
                 override fun onResult(result: MutableList<LocalMedia>?) {
                     val localVideo = result?.get(0)
                     val path = localVideo?.path
+//                    val realPath = localVideo?.realPath
+                    LogUtils.d("path=${path}")
+                    LogUtils.d("realPath=${localVideo?.realPath}")
                     mViewModel.setCoverPath(path)
                     mViewModel.apply {
                         setVideoFile(localVideo)

@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cn.sqh.creativeworld.network.service.VideoService
 import cn.sqh.creativeworld.repository.tweet.ITweetRepository
+import cn.sqh.creativeworld.repository.video.IVideoRepository
+import cn.sqh.creativeworld.repository.video.VideoRepositoryImpl
 import cn.sqh.creativeworld.ui.home.data.VideoApiModel
 import cn.sqh.creativeworld.ui.upload.data.UploadingVideo
 import cn.sqh.creativeworld.utils.toResponseBody
@@ -23,6 +25,7 @@ import java.io.File
 import java.util.*
 
 class UploadVideoViewModel @ViewModelInject constructor(
+    private val videoRepositoryImpl: IVideoRepository,
     private val videoApi: VideoService
 ) : ViewModel() {
 
@@ -52,28 +55,25 @@ class UploadVideoViewModel @ViewModelInject constructor(
         }
     }
 
+
     @InternalCoroutinesApi
     fun uploadVideo(callback: suspend () -> Unit) {
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                val videoFileInfo = videoFile.value
-                val coverFile = uploadingVideo.coverFile
-                var videoDesc = uploadingVideo.videoDesc
-                if (videoDesc.isEmpty()) videoDesc = "无"
-                if (videoFileInfo != null && coverFile != null) {
-                    flow<VideoApiModel.OneVideoResult> {
-                        val result = videoApi.uploadVideo(
-                            uploadingVideo.videoTitle.toResponseBody(),
-                            videoDesc.toResponseBody(),
-                            createVideoPartBody(videoFileInfo.path),
-                            createCoverPartBody(coverFile)
-                        )
-                        emit(result)
-                    }.collect {
+            val videoFileInfo = videoFile.value
+            val coverFile = uploadingVideo.coverFile
+            var videoDesc = uploadingVideo.videoDesc
+            if (videoDesc.isEmpty()) videoDesc = "无"
+
+            if (videoFileInfo != null && coverFile != null) {
+                videoRepositoryImpl.uploadVideo(
+                    uploadingVideo.videoTitle,
+                    videoDesc,
+                    videoFileInfo.realPath,
+                    coverFile
+                ).collect {
 //                        LogUtils.d("服务器响应=${it.data}")
-                        withContext(Dispatchers.Main) {
-                            callback()
-                        }
+                    withContext(Dispatchers.Main) {
+                        callback()
                     }
                 }
             }
