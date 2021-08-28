@@ -6,6 +6,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="viewModel"
+            type="cn.sqh.creativeworld.ui.videoDetail.VideoDetailViewModel" />
 
     </data>
 
@@ -18,10 +21,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:defaultMaxLineCounts="2"
-            app:ftv_text="在俱乐部周四证实，他们无法在西甲的财务追逐他实，他的财务规定范围一直在追逐他的合同。"
+            app:ftv_text="@{viewModel.videoLiveData.description}"
+            app:ftv_textColor="?attr/colorPrimaryVariant"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginHorizontal="@dimen/grid_2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="在俱乐部周四证实，他们无法在西甲的财务追逐他实，他的财务规定范围一直在追逐他的合同。"
+
+            />
 
         <ImageView
             android:id="@+id/icon_play_num"
@@ -31,16 +39,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ftv_video_desc"
             app:srcCompat="@drawable/ic_television"
-            app:tint="?attr/colorPrimary" />
+            app:tint="?attr/colorSecondary" />
 
         <TextView
             android:id="@+id/tv_play_num"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/grid_0_5"
-            android:text="123"
+            android:text="@{viewModel.videoLiveData.playNumber}"
             android:textAppearance="?attr/textAppearanceOverline"
-            android:textColor="?attr/colorPrimary"
+            android:textColor="?attr/colorOnPrimary"
             app:layout_constraintStart_toEndOf="@+id/icon_play_num"
             app:layout_constraintTop_toTopOf="@id/icon_play_num"
             app:layout_constraintBottom_toBottomOf="@id/icon_play_num"
@@ -54,16 +62,16 @@
             app:layout_constraintStart_toEndOf="@id/tv_play_num"
             app:layout_constraintTop_toBottomOf="@id/ftv_video_desc"
             app:srcCompat="@drawable/ic_calendar"
-            app:tint="?attr/colorPrimary" />
+            app:tint="?attr/colorSecondary" />
 
         <TextView
             android:id="@+id/tv_upload_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/grid_0_5"
-            android:text="2021-06-11"
+            android:text="@{viewModel.videoLiveData.uploadDate}"
             android:textAppearance="?attr/textAppearanceOverline"
-            android:textColor="?attr/colorPrimary"
+            android:textColor="?attr/colorOnPrimary"
             app:layout_constraintStart_toEndOf="@+id/icon_calendar"
             app:layout_constraintTop_toTopOf="@id/icon_calendar"
             app:layout_constraintBottom_toBottomOf="@id/icon_calendar"
@@ -87,7 +95,7 @@
             android:layout_marginStart="@dimen/grid_1"
             android:text="@string/copy_forbid_presentation"
             android:textAppearance="?attr/textAppearanceOverline"
-            android:textColor="?attr/colorPrimary"
+            android:textColor="?attr/colorOnPrimary"
             app:layout_constraintStart_toEndOf="@+id/icon_forbid"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/icon_forbid"
@@ -104,7 +112,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/icon_forbid"
             app:srcCompat="@drawable/ic_recommend"
-            app:tint="?attr/colorPrimary"/>
+            app:tint="?attr/colorOnPrimary"/>
 
         <ImageView
             android:id="@+id/icon_unrecommend"
@@ -116,7 +124,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/icon_forbid"
             app:srcCompat="@drawable/ic_unrecommend"
-            app:tint="?attr/colorPrimary"/>
+            app:tint="?attr/colorOnPrimary"/>
 
         <ImageView
             android:id="@+id/icon_love"
@@ -128,7 +136,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/icon_forbid"
             app:srcCompat="@drawable/ic_love_32"
-            app:tint="?attr/colorPrimary"/>
+            app:tint="?attr/colorOnPrimary"/>
 
         <ImageView
             android:id="@+id/icon_share"
@@ -139,8 +147,8 @@
             app:layout_constraintHorizontal_bias="0.85"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/icon_forbid"
-            app:srcCompat="@drawable/ic_share"
-            app:tint="?attr/colorPrimary"/>
+            app:srcCompat="@drawable/ic_share_32"
+            app:tint="?attr/colorOnPrimary"/>
 
 
         <View
@@ -163,6 +171,7 @@
             app:layoutManager="LinearLayoutManager"
             tools:context=".ui.videoDetail.fragments.VideoDescriptionFragment"
             app:layout_constraintTop_toBottomOf="@id/divider"
+            android:overScrollMode="never"
             tools:listitem="@layout/item_other_video"
             />
 

@@ -12,6 +12,9 @@ import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 
+/**
+ * 老版的网络工具类，需要配合Call<T>使用，不能使用Moshi之类的转换器以及Flow
+ */
 object CreativeWorldNetwork {
 
     private val mUserService = ServiceCreator.create<UserService>()

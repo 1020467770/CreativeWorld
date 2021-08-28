@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="cn.sqh.creativeworld.ui.upload.UploadVideoViewModel" />
+
+        <variable
+            name="selectVideoHandler"
+            type="cn.sqh.creativeworld.ui.upload.ChooseVideoListener" />
+
+        <variable
+            name="uploadedHandler"
+            type="cn.sqh.creativeworld.ui.upload.ActionUploadListener" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:colorBackground"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingHorizontal="@dimen/grid_0_5"
+        android:paddingTop="@dimen/grid_1"
+        app:paddingTopSystemWindowInsets="@{true}"
+        tools:context=".ui.upload.UploadVideoFragment">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/upload_video_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/grid_1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/grid_1_5"
+                android:paddingTop="@dimen/grid_2"
+                android:paddingBottom="@dimen/bottom_app_bar_height"
+                app:paddingBottomSystemWindowInsets="@{true}">
+
+                <cn.sqh.creativeworld.ui.common.RoundCornerImageView
+                    android:onClick="@{()->selectVideoHandler.onActionChooseVideo()}"
+                    android:id="@+id/uploading_video_preview_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintDimensionRatio="4:3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:placeholder="@{@drawable/video_detail_placeholder_scrim}"
+                    app:srcCompat="@drawable/video_detail_placeholder_scrim"
+                    app:srcUrl="@{viewModel.coverPath}">
+
+                </cn.sqh.creativeworld.ui.common.RoundCornerImageView>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="@drawable/profile_outline_clickable"
+                    android:padding="@dimen/grid_1"
+                    android:src="@drawable/ic_plus_24"
+                    android:onClick="@{()->selectVideoHandler.onActionChooseVideo()}"
+                    app:goneIf="@{viewModel.videoFile!=null}"
+                    app:layout_constraintBottom_toBottomOf="@id/uploading_video_preview_img"
+                    app:layout_constraintEnd_toEndOf="@id/uploading_video_preview_img"
+                    app:layout_constraintStart_toStartOf="@id/uploading_video_preview_img"
+                    app:layout_constraintTop_toTopOf="@id/uploading_video_preview_img"
+                    app:srcCompat="@drawable/ic_plus_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_0_5"
+                    android:layout_marginBottom="@dimen/grid_0_5"
+                    android:drawablePadding="@dimen/grid_0_5"
+                    android:text="@string/select_complete"
+                    android:textAppearance="?attr/textAppearanceOverline"
+                    android:textColor="@color/color_on_primary_surface_high_alpha"
+                    app:drawableEndCompat="@drawable/picture_icon_checked"
+                    app:drawableTint="@color/sqh_white_50_alpha_060"
+                    app:goneIf="@{viewModel.videoFile==null}"
+                    app:layout_constraintBottom_toBottomOf="@id/uploading_video_preview_img"
+                    app:layout_constraintStart_toStartOf="@id/uploading_video_preview_img" />
+
+
+                <TextView
+                    android:id="@+id/tv_change_cover_file"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:drawablePadding="@dimen/grid_0_5"
+                    android:focusable="true"
+                    android:foreground="@drawable/foreground_clickable_textview"
+                    android:paddingHorizontal="@dimen/grid_1"
+                    android:paddingBottom="@dimen/grid_0_5"
+                    android:text="@string/change_video_cover"
+                    android:textAppearance="?attr/textAppearanceButton"
+                    android:textColor="?attr/colorOnPrimary"
+                    app:drawableLeftCompat="@drawable/ic_change_16"
+                    app:layout_constraintBottom_toBottomOf="@id/uploading_video_preview_img"
+                    app:layout_constraintEnd_toEndOf="@id/uploading_video_preview_img"
+                    tools:text="@string/change_video_cover" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_title"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/grid_2"
+                    app:boxBackgroundColor="@color/sqh_gray_middle_alpha_030"
+                    app:boxCornerRadiusBottomEnd="@dimen/sqh_small_component_corner_radius"
+                    app:boxCornerRadiusBottomStart="@dimen/sqh_small_component_corner_radius"
+
+                    app:boxCornerRadiusTopEnd="@dimen/sqh_small_component_corner_radius"
+                    app:boxCornerRadiusTopStart="@dimen/sqh_small_component_corner_radius"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+
+                    app:counterEnabled="true"
+                    app:counterMaxLength="@integer/title_max_length"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/uploading_video_preview_img">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_input_edit_text_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_change_video_title"
+                        android:text="@={viewModel.uploadingVideo.videoTitle}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_desc"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/grid_1"
+                    app:boxBackgroundColor="@color/sqh_gray_middle_alpha_030"
+                    app:boxCornerRadiusBottomEnd="@dimen/sqh_small_component_corner_radius"
+                    app:boxCornerRadiusBottomStart="@dimen/sqh_small_component_corner_radius"
+
+                    app:boxCornerRadiusTopEnd="@dimen/sqh_small_component_corner_radius"
+                    app:boxCornerRadiusTopStart="@dimen/sqh_small_component_corner_radius"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+
+                    app:counterEnabled="true"
+                    app:counterMaxLength="@integer/desc_max_length"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_input_layout_title">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_input_edit_text_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_change_video_desc"
+                        android:text="@={viewModel.uploadingVideo.videoDesc}"
+                        tools:text="自2008年以，来美国向加拿大递交的798份引渡请求中，只有8份不成功，意味着孟晚舟不被引渡的概率只有1%。加拿大检察官曾提到过，法官的任务不是按照他国法律判断孟晚舟是否有罪，而是只需要决定引渡审" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btn_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/grid_2"
+                    android:enabled="@{viewModel.videoFile!=null}"
+                    android:onClick="@{()->uploadedHandler.onActionUploadVideo()}"
+                    android:text="@string/action_upload"
+                    app:layout_constraintTop_toBottomOf="@id/text_input_layout_desc" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

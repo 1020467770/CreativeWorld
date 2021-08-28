@@ -1,10 +1,7 @@
 package cn.sqh.creativeworld.core.data
 
 import androidx.recyclerview.widget.DiffUtil
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.Index
-import androidx.room.PrimaryKey
+import androidx.room.*
 import cn.sqh.creativeworld.network.typeConverter.GsonDateTypeConverter
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.JsonAdapter
@@ -19,7 +16,8 @@ typealias VideoId = Long
         Index("url")
     ]
 )
-data class Video(
+data class Video @JvmOverloads constructor(
+
 
     @Embedded(prefix = "owner_")
     var owner: User?,
@@ -27,145 +25,59 @@ data class Video(
     @PrimaryKey(autoGenerate = false)
     @Expose
     @SerializedName("videoId")
-    val id: VideoId,
+    var id: VideoId = 0,
 
     @Expose
     @SerializedName("videoName")
-    val name: String,
+    var name: String = "",
 
     @Expose
     @SerializedName("ownerName")
-    val uploader: String,
+    var uploader: String = "",
 
     @Expose
     @SerializedName("videoDescribe")
-    val description: String?,
+    var description: String? = "",
 
-    var playNumber: Long,
+    @Expose
+    @SerializedName("videoViewNum")
+    var playNumber: Long = 0,
 
     @Expose
     @SerializedName("videoLikeNum")
-    var likerNumber: Long,
+    var likerNumber: Long = 0,
 
     @Expose
     @SerializedName("videoDislikeNum")
-    var dislikeNumber: Long,
+    var dislikeNumber: Long = 0,
 
     @Expose
     @SerializedName("videoCollectedNum")
-    var collectorNumber: Long,
+    var collectorNumber: Long = 0,
 
     @Expose
     @SerializedName("videoRetweetNum")
-    var forwarderNumber: Long,
+    var forwarderNumber: Long = 0,
 
     @Expose
     @SerializedName("videoURL")
-    var url: String,
+    var url: String = "",
+
+    @Expose
+    @SerializedName("coverURL")
+    var coverUrl: String = "",
 
     @Expose
     @JsonAdapter(GsonDateTypeConverter::class)
     @SerializedName("videoUploadDate")
     var uploadDate: Date,
-) {
-//    val transitionName = "$id$name"
-}
+
+    var nextPage: Int = 0
+
+)
 
 object VideoDiff : DiffUtil.ItemCallback<Video>() {
     override fun areItemsTheSame(oldItem: Video, newItem: Video) = oldItem.id == newItem.id
     override fun areContentsTheSame(oldItem: Video, newItem: Video) = oldItem == newItem
 }
 
-/*data class Video2(
-    @Expose
-    @SerializedName("videoId")
-    val id: VideoId,
-
-    @Expose
-    @SerializedName("videoName")
-    val name: String,
-
-    @Expose
-    @SerializedName("ownerName")
-    val uploader: String,
-
-    @Expose
-    @SerializedName("videoDescribe")
-    val description: String,
-
-    var playNumber: Long,
-
-    @Expose
-    @SerializedName("videoLikeNum")
-    var likerNumber: Long,
-
-) {
-    val transitionName = "$id$name"
-}*/
-
-/*
-val videos = listOf(
-    Video2(
-        id = 0L,
-        name = "奥特曼和怪兽的恋爱故事",
-        uploader = "zhangsan",
-        description = "没什么好描述的",
-        playNumber = 12345,
-        likerNumber = 1234
-    ),
-    Video2(
-        id = 1L,
-        name = "史诗级人类高质量对局",
-        uploader = "lisi",
-        description = "没什么好描述的",
-        playNumber = 11111,
-        likerNumber = 1223
-    ),
-    Video2(
-        id = 2L,
-        name = "【震惊】一女人与狗竟在广场上干出如此骇人之事！！",
-        uploader = "wangwu",
-        description = "没什么好描述的",
-        playNumber = 10087,
-        likerNumber = 1234
-    ),
-    Video2(
-        id = 3L,
-        name = "【大新闻】我是标题党",
-        uploader = "zhaoliu",
-        description = "没什么好描述的",
-        playNumber = 10086,
-        likerNumber = 123
-    ),
-    Video2(
-        id = 4L,
-        name = "爱了！不愧是我的牙签哥哥",
-        uploader = "zhangsan",
-        description = "没什么好描述的",
-        playNumber = 1600,
-        likerNumber = 1234
-    ),
-    Video2(
-        id = 5L,
-        name = "东 京 奥 运 会 ！ ！ ！",
-        uploader = "zhangsan",
-        description = "没什么好描述的",
-        playNumber = 12345,
-        likerNumber = 1234
-    ),
-    Video2(
-        id = 6L,
-        name = "我的英语可好了，看我给你秀一段rap：My English is very good good ",
-        uploader = "zhangsan",
-        description = "没什么好描述的",
-        playNumber = 11233,
-        likerNumber = 36
-    )
-)
-*/
-
-/*
-object VideoRepo {
-    fun getVideo(id: VideoId) = videos.find { it.id == id } ?: videos.last()
-}
-*/

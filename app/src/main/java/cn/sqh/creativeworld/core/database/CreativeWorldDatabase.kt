@@ -6,22 +6,26 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import cn.sqh.creativeworld.CreativeWorldApplication
-import cn.sqh.creativeworld.core.data.User
-import cn.sqh.creativeworld.core.data.Video
-
+import cn.sqh.creativeworld.core.data.*
 
 @Database(
     entities = [
         User::class,
-        Video::class
+        Video::class,
+        TweetEntity::class,
+        VideoCommentEntity::class,
+        TweetCommentEntity::class
     ],
-    version = 1,
+    version = 1, exportSchema = false
 )
 @TypeConverters(DataTypeConverter::class)//注册转换器类
 abstract class CreativeWorldDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
     abstract fun videoDao(): VideoDao
+    abstract fun tweetDao(): TweetDao
+    abstract fun videoCommentDao(): VideoCommentDao
+    abstract fun tweetCommentDao(): TweetCommentDao
 
     companion object {
 

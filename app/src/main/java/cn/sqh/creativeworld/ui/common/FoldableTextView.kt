@@ -2,6 +2,7 @@ package cn.sqh.creativeworld.ui.common
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
@@ -38,6 +39,8 @@ class FoldableTextView(context: Context, attrs: AttributeSet) :
 
     private val text: String?
 
+    private val textColor: Int?
+
     private var isFirstPaint = true
 
     private var defaultMaxLineCounts = 3
@@ -65,6 +68,7 @@ class FoldableTextView(context: Context, attrs: AttributeSet) :
         val typedArray =
             context.obtainStyledAttributes(attrs, R.styleable.FoldableTextView)
         text = typedArray.getString(R.styleable.FoldableTextView_ftv_text)
+        textColor = typedArray.getInt(R.styleable.FoldableTextView_ftv_textColor, Color.BLACK)
         defaultMaxLineCounts =
             typedArray.getInt(R.styleable.FoldableTextView_defaultMaxLineCounts, 3)
 
@@ -95,13 +99,21 @@ class FoldableTextView(context: Context, attrs: AttributeSet) :
             fillAfter = true
         }
         mFoldableTextViewHolder = FoldableTextViewHolder(this)
+        LogUtils.d("此时text=$text")
 
         setText(text)
+        setTextColor(textColor)
 
     }
 
-    private fun setText(text: String?) {
-        mFoldableTextViewHolder.tvFold.text = text
+    fun setTextColor(color: Int) {
+        mFoldableTextViewHolder.tvFold.setTextColor(color)
+    }
+
+    fun setText(text: String?) {
+        LogUtils.d("设置text=$text")
+
+        mFoldableTextViewHolder.tvFold.text = text ?: ""
         val vto = mFoldableTextViewHolder.tvFold.viewTreeObserver
         vto.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {

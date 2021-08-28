@@ -13,25 +13,25 @@ object NavigationStore {
     private var navigationMenuItems = mutableListOf(
         NavigationModelItem.NavMenuItem(
             id = HOME_PAGE,
-            icon = R.drawable.ic_twotone_inbox,
+            icon = R.drawable.ic_index_32,
             titleRes = R.string.navigation_home_page,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
             id = FAVORITE,
-            icon = R.drawable.ic_twotone_stars,
+            icon = R.drawable.ic_favorite_32,
             titleRes = R.string.navigation_favorite,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
             id = UPLOAD_VIDEOS,
-            icon = R.drawable.ic_twotone_send,
+            icon = R.drawable.ic_repository_32,
             titleRes = R.string.navigation_upload_videos,
             checked = false
         ),
         NavigationModelItem.NavMenuItem(
             id = COMMUNITY,
-            icon = R.drawable.ic_twotone_delete,
+            icon = R.drawable.ic_community_32,
             titleRes = R.string.navigation_community,
             checked = false
         )

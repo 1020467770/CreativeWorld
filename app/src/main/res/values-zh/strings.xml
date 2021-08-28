@@ -9,8 +9,6 @@
     <string name="navigation_upload_videos">我的视频</string>
     <string name="navigation_community">社区</string>
 
-    <string name="email_card_transition_name">email_card_%1$s</string>
-    <string name="email_card_detail_transition_name">email_card_detail</string>
 
     <!--VideoDetailFragment-->
     <string name="action_follow_user">关注</string>
@@ -33,5 +31,21 @@
     <string name="copy_forbid_presentation">未经授权禁止转载</string>
     <string name="uploader_fans_number">%1$s粉丝</string>
     <string name="uploader_videos_number">%1$s视频</string>
+    <string name="seconds_ago">%1$d秒前</string>
+    <string name="minutes_ago">%1$d分钟前</string>
+    <string name="hours_ago">%1$d小时前</string>
+    <string name="days_ago">%1$d天前</string>
+    <string name="network_retry">重试</string>
+    <string name="change_video_cover">更换封面</string>
+    <string name="hint_change_video_title">视频标题</string>
+    <string name="hint_change_video_desc">内容简介</string>
+    <string name="select_complete">视频已选择</string>
+    <string name="action_upload">上传</string>
+    <string name="empty_video_description">无视频简介</string>
+    <string name="action_comment">评论</string>
+    <string name="follow_num">关注</string>
+    <string name="fans_num">粉丝</string>
+    <string name="beliked_num">获赞与喜欢</string>
+    <string name="hint_action_comment">写评论</string>
 
 </resources>

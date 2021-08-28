@@ -9,11 +9,11 @@
 
         <variable
             name="video"
-            type="cn.sqh.creativeworld.core.data.Video" />
+            type="cn.sqh.creativeworld.ui.home.data.VideoPreviewModel" />
 
         <variable
             name="clickListener"
-            type="cn.sqh.creativeworld.ui.home.VideoPreviewAdapter.VideoViewClickListener" />
+            type="cn.sqh.creativeworld.ui.home.VideoPreviewAdapter2.VideoViewClickListener" />
     </data>
 
 
@@ -22,12 +22,13 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/grid_0_5"
         android:layout_marginVertical="@dimen/grid_0_25"
-        android:background="?attr/colorSecondary">
+        >
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_video_preview_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/grid_1"
             android:clickable="true"
             android:elevation="@dimen/elevation_4"
             android:focusable="true"
@@ -54,23 +55,23 @@
 
                 <ImageView
                     android:id="@+id/video_preview_img"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:scaleType="centerCrop"
                     app:layout_constraintDimensionRatio="4:3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/avatar_0" />
+                    app:placeholder="@{@drawable/video_preview_img_placeholder}"
+                    app:srcUrl="@{video.previewImageUrl}"
+                    app:srcCompat="@drawable/video_preview_img_placeholder" />
 
                 <ImageView
                     android:id="@+id/profile_img"
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
+                    android:layout_width="@dimen/common_profile_image_size"
+                    android:layout_height="@dimen/common_profile_image_size"
                     android:foreground="@drawable/profile_outline"
-                    app:glideCenterCrop="@{true}"
-                    app:glideCircularCrop="@{true}"
-                    app:glideSrc="@{R.drawable.avatar_10}"
+                    android:scaleType="centerCrop"
+                    app:circleCrop="@{true}"
+                    app:srcUrl="@{video.profileImageUrl}"
                     app:layout_constraintBottom_toBottomOf="@id/video_preview_img"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -82,9 +83,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="@dimen/grid_0_5"
-                    android:text="@{video.uploader}"
+                    android:text="@{video.uploaderName}"
                     android:textAppearance="?attr/textAppearanceSubtitle2"
-                    android:textColor="?attr/colorPrimary"
+                    android:textColor="?attr/colorPrimaryVariant"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/profile_img"
@@ -96,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:paddingHorizontal="@dimen/grid_2"
-                    android:text="@{video.name}"
+                    android:text="@{video.videoName}"
                     android:textAppearance="?attr/textAppearanceSubtitle1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -110,7 +111,7 @@
                     android:orientation="vertical"
                     app:layout_constraintGuide_percent="0.5" />
 
-                <ImageView
+                <!--<ImageView
                     android:id="@+id/icon_play_num"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -118,7 +119,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/tv_play_num"
                     app:layout_constraintTop_toBottomOf="@id/video_name"
                     app:srcCompat="@drawable/ic_television"
-                    app:tint="?attr/colorPrimary" />
+                    app:tint="?attr/colorPrimary" />-->
 
                 <TextView
                     android:id="@+id/tv_play_num"
@@ -129,13 +130,17 @@
                     android:paddingStart="@dimen/grid_0_5"
                     android:text="@{String.valueOf(video.playNumber)}"
                     android:textAppearance="?attr/textAppearanceSubtitle2"
-                    android:textColor="?attr/colorPrimary"
+                    android:textColor="?attr/colorPrimaryVariant"
                     app:layout_constraintEnd_toStartOf="@+id/guideline"
                     app:layout_constraintTop_toBottomOf="@id/video_name"
                     tools:ignore="RtlSymmetry"
-                    tools:text="233455" />
+                    tools:text="233455"
+                    app:drawableStartCompat="@drawable/ic_television"
+                    android:drawablePadding="@dimen/grid_0_5"
+                    app:drawableTint="?attr/colorPrimary"
+                    />
 
-                <ImageView
+                <!--<ImageView
                     android:id="@+id/icon_love_num"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -144,7 +149,7 @@
                     app:layout_constraintStart_toEndOf="@id/guideline"
                     app:layout_constraintTop_toBottomOf="@id/video_name"
                     app:srcCompat="@drawable/ic_love"
-                    app:tint="?attr/colorPrimary" />
+                    app:tint="?attr/colorPrimary" />-->
 
                 <TextView
                     android:id="@+id/tv_love_num"
@@ -154,11 +159,14 @@
                     android:paddingStart="@dimen/grid_0_5"
                     android:text="@{String.valueOf(video.likerNumber)}"
                     android:textAppearance="?attr/textAppearanceSubtitle2"
-                    android:textColor="?attr/colorPrimary"
-                    app:layout_constraintStart_toEndOf="@+id/icon_love_num"
+                    android:textColor="?attr/colorPrimaryVariant"
+                    app:layout_constraintStart_toEndOf="@+id/guideline"
                     app:layout_constraintTop_toBottomOf="@id/video_name"
                     tools:ignore="RtlSymmetry"
-                    tools:text="21345" />
+                    tools:text="21345"
+                    app:drawableStartCompat="@drawable/ic_love"
+                    android:drawablePadding="@dimen/grid_0_5"
+                    app:drawableTint="?attr/colorPrimary" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

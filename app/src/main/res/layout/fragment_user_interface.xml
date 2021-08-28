@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="cn.sqh.creativeworld.R" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".ui.userInterface.UserInterfaceFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/user_background"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:foreground="@drawable/picture_shade_foreground"
+                android:scaleType="fitXY"
+                app:layout_constraintDimensionRatio="4:4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/avatar_0" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize"
+                app:contentInsetStartWithNavigation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:marginTopSystemWindowInsets="@{true}"
+                app:navigationIcon="@drawable/ic_back" />
+
+            <ImageView
+                android:id="@+id/profile_img"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="@dimen/grid_3"
+                android:layout_marginTop="@dimen/grid_8"
+                android:clickable="true"
+                android:focusable="true"
+                app:glideCenterCrop="@{true}"
+                app:glideCircularCrop="@{true}"
+                app:glideSrc="@{R.drawable.avatar_1}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:placeholder="@{@drawable/ic_profile_placeholder}" />
+
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_1"
+                android:paddingHorizontal="@dimen/grid_2"
+                android:text="zhangsan"
+                android:textAppearance="?textAppearanceBody1"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@id/profile_img"
+                app:layout_constraintTop_toTopOf="@+id/profile_img"
+                tools:text="zhangsan" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/profile_img"
+                app:layout_constraintStart_toEndOf="@id/profile_img"
+                app:layout_constraintTop_toBottomOf="@id/tv_username"
+                android:layout_marginStart="@dimen/grid_1"
+                app:tint="@color/sqh_blue"
+                app:srcCompat="@drawable/ic_male_16" />
+
+            <!--<com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group"
+                android:layout_width="120dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/profile_img"
+                app:layout_constraintStart_toEndOf="@id/profile_img"
+                app:layout_constraintTop_toBottomOf="@id/tv_username">
+
+                <com.google.android.material.chip.Chip
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="@color/sqh_black_900_alpha_008"
+                    app:chipBackgroundColor="@color/sqh_black_900_alpha_008"
+                    app:chipEndPadding="0dp"
+                    app:glideChipIcon="@{R.drawable.ic_male_16}"
+                    app:glideChipIconCenterCrop="@{true}"
+                    app:glideChipIconCircularCrop="@{true}"
+                    app:chipStartPadding="0dp"
+                    app:chipSurfaceColor="@color/sqh_black_900_alpha_020"
+                    app:iconEndPadding="0dp"
+                    app:iconStartPadding="0dp"
+                    app:rippleColor="@color/sqh_black_900_alpha_020" />
+
+            </com.google.android.material.chip.ChipGroup>-->
+
+            <cn.sqh.creativeworld.ui.common.FoldableTextView
+                android:id="@+id/ftv_user_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/grid_1"
+                app:defaultMaxLineCounts="2"
+                app:ftv_text="阿爸爸爸爸爸爸吧巴巴爸爸爸爸爸爸吧巴巴变"
+                app:ftv_textColor="@color/white"
+                app:layout_constraintEnd_toStartOf="@id/btn_edit_info"
+                app:layout_constraintStart_toStartOf="@id/profile_img"
+                app:layout_constraintTop_toBottomOf="@id/profile_img"
+                />
+
+            <TextView
+                android:id="@+id/tv_follow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/grid_4"
+                android:paddingVertical="@dimen/grid_0_5"
+                android:text="@string/follow_num"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/exo_white_opacity_70"
+                app:layout_constraintStart_toStartOf="@id/profile_img"
+                app:layout_constraintTop_toBottomOf="@id/ftv_user_desc" />
+
+            <TextView
+                android:id="@+id/tv_follow_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1"
+                android:textAppearance="?textAppearanceBody1"
+                android:textColor="@color/exo_white"
+                app:layout_constraintBottom_toTopOf="@id/tv_follow"
+                app:layout_constraintEnd_toEndOf="@id/tv_follow"
+                app:layout_constraintStart_toStartOf="@id/tv_follow"
+                tools:text="1" />
+
+            <TextView
+                android:id="@+id/tv_fans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_2"
+                android:layout_marginTop="@dimen/grid_4"
+                android:paddingVertical="@dimen/grid_0_5"
+                android:text="@string/fans_num"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/exo_white_opacity_70"
+                app:layout_constraintBottom_toBottomOf="@id/tv_follow"
+                app:layout_constraintStart_toEndOf="@id/tv_follow" />
+
+            <TextView
+                android:id="@+id/tv_fans_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="12"
+                android:textAppearance="?textAppearanceBody1"
+                android:textColor="@color/exo_white"
+                app:layout_constraintBottom_toTopOf="@id/tv_fans"
+                app:layout_constraintEnd_toEndOf="@id/tv_fans"
+                app:layout_constraintStart_toStartOf="@id/tv_fans"
+                tools:text="12" />
+
+            <TextView
+                android:id="@+id/tv_beliked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/grid_2"
+                android:layout_marginTop="@dimen/grid_4"
+                android:paddingVertical="@dimen/grid_0_5"
+                android:text="@string/beliked_num"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/exo_white_opacity_70"
+                app:layout_constraintBottom_toBottomOf="@id/tv_fans"
+                app:layout_constraintStart_toEndOf="@id/tv_fans" />
+
+            <TextView
+                android:id="@+id/tv_beliked_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="134"
+                android:textAppearance="?textAppearanceBody1"
+                android:textColor="@color/exo_white"
+                app:layout_constraintBottom_toTopOf="@id/tv_beliked"
+                app:layout_constraintEnd_toEndOf="@id/tv_beliked"
+                app:layout_constraintStart_toStartOf="@id/tv_beliked"
+                tools:text="134" />
+
+            <TextView
+                android:id="@+id/btn_edit_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/grid_2"
+                android:layout_marginBottom="@dimen/grid_1"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="@drawable/foreground_clickable_view_outline"
+                android:paddingHorizontal="@dimen/grid_1"
+                android:paddingVertical="@dimen/grid_0_5"
+                android:text="编辑资料"
+                android:textAppearance="?textAppearanceBody2"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/tv_follow"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageView
+                android:id="@+id/img_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/grid_1"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="@drawable/foreground_clickable_view_outline"
+                android:paddingHorizontal="@dimen/grid_1"
+                android:paddingVertical="@dimen/grid_0_25"
+                app:layout_constraintBottom_toTopOf="@+id/profile_img"
+                app:layout_constraintEnd_toEndOf="@id/btn_edit_info"
+                app:srcCompat="@drawable/ic_settings"
+                app:tint="@color/white" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

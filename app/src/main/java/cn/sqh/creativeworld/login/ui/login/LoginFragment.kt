@@ -22,6 +22,8 @@ import cn.sqh.creativeworld.databinding.FragmentLoginBinding
 import cn.sqh.creativeworld.login.data.model.LoggingUser
 import com.blankj.utilcode.util.LogUtils
 import com.google.android.material.transition.MaterialSharedAxis
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
 
 class LoginFragment : Fragment() {
@@ -96,6 +98,8 @@ class LoginFragment : Fragment() {
         return mDataBinding.root
     }
 
+    @ExperimentalCoroutinesApi
+    @FlowPreview
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loginViewModel.loggedInUser.observe(viewLifecycleOwner) { result ->
@@ -107,10 +111,14 @@ class LoginFragment : Fragment() {
                 }
                 Resource.Status.ERROR -> {
                     mDataBinding.loading.visibility = View.GONE
+                    mDataBinding.login.isEnabled =
+                        loginViewModel.loginFormState.value?.isDataValid ?: false
                     showLoginFailed(R.string.login_failed)
+
                 }
                 Resource.Status.LOADING -> {
                     mDataBinding.loading.visibility = View.VISIBLE
+                    mDataBinding.login.isEnabled = false
                 }
             }
             LogUtils.d(result)

@@ -13,9 +13,11 @@ import cn.sqh.creativeworld.R
 import cn.sqh.creativeworld.core.data.Account
 import cn.sqh.creativeworld.core.data.AccountStore
 import cn.sqh.creativeworld.databinding.FragmentBottomNavDrawerBinding
+import cn.sqh.creativeworld.repository.old.UserRepository
 import cn.sqh.creativeworld.ui.bottomNav.sandwich.AccountAdapter
 import cn.sqh.creativeworld.ui.bottomNav.sandwich.OnSandwichStateChangedAction
 import cn.sqh.creativeworld.ui.bottomNav.sandwich.OnSandwichSlideAction
+import cn.sqh.creativeworld.ui.home.HomeFragmentDirections
 import cn.sqh.creativeworld.utils.lerp
 import cn.sqh.creativeworld.utils.themeColor
 import cn.sqh.creativeworld.utils.themeInterpolator
@@ -72,7 +74,8 @@ class BottomNavDrawerFragment :
                 //获取副主题颜色
                 backgroundContext.themeColor(R.attr.colorPrimarySurfaceVariant)
             )
-            elevation = resources.getDimension(R.dimen.elevation_8)//materialDrawable的elevation高度，背景的elevation较低
+            elevation =
+                resources.getDimension(R.dimen.elevation_8)//materialDrawable的elevation高度，背景的elevation较低
             initializeElevationOverlay(requireContext())//刷新drawable以便重新计算阴影等值
         }
     }
@@ -112,6 +115,8 @@ class BottomNavDrawerFragment :
         }
     }
 
+    var sandwichProfileClickListener: SandwichProfileClickListener? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //注册回退监听
@@ -123,7 +128,9 @@ class BottomNavDrawerFragment :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mDataBinding = FragmentBottomNavDrawerBinding.inflate(inflater, container, false)
+        mDataBinding = FragmentBottomNavDrawerBinding.inflate(inflater, container, false).apply {
+            userRepository = UserRepository
+        }
         mDataBinding.foregroundContainer.setOnApplyWindowInsetsListener { view, windowInsets ->
             //临时存放系统工具栏的高度，以便之后展开fragment不会超过它
             view.setTag(
@@ -176,6 +183,11 @@ class BottomNavDrawerFragment :
                             newState != BottomSheetBehavior.STATE_HIDDEN
                     }
                 })
+            }
+
+            profileImageView.setOnClickListener {
+                close()
+                sandwichProfileClickListener?.onSandwichProfileClick()
             }
 
             profileImageView.setOnLongClickListener {
@@ -385,6 +397,10 @@ class BottomNavDrawerFragment :
     override fun onAccountClicked(account: Account) {
         AccountStore.setCurrentUserAccount(account.id)
         toggleSandwich()
+    }
+
+    interface SandwichProfileClickListener {
+        fun onSandwichProfileClick()
     }
 
 }

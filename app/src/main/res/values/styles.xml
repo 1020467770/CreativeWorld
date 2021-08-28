@@ -38,6 +38,10 @@
         <item name="android:textColor">@color/color_pressed_textview</item>
     </style>
 
+    <!--<style name="TextInputEditText.Sqh.FilledBox.Dense" parent="Widget.MaterialComponents.TextInputEditText.FilledBox.Dense">
+        <item name="android:textAppearance">?attr/textAppearanceOverline</item>
+    </style>-->
+
     <dimen name="sqh_small_component_corner_radius">24dp</dimen>
     <dimen name="sqh_medium_component_corner_radius">0dp</dimen>
     <dimen name="sqh_large_component_corner_radius">12dp</dimen>

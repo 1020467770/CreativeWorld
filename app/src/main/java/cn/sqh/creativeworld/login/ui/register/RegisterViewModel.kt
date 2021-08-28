@@ -7,11 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import cn.sqh.creativeworld.R
 import cn.sqh.creativeworld.core.EmptyLiveData
-import cn.sqh.creativeworld.login.data.model.LoggingUser
-import cn.sqh.creativeworld.login.data.model.LoginFormState
 import cn.sqh.creativeworld.login.data.model.RegisterFormState
 import cn.sqh.creativeworld.login.data.model.RegisteringUser
-import cn.sqh.creativeworld.repository.UserRepository
+import cn.sqh.creativeworld.repository.old.UserRepository
 
 class RegisterViewModel : ViewModel() {
 

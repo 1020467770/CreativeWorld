@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="cn.sqh.creativeworld.ui.home.HomeViewModel2" />
+
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -33,7 +37,9 @@
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/top_tool_bar_min_height"
                 android:paddingStart="@dimen/grid_2"
-                app:navigationIcon="@drawable/ic_account"
+                app:glideToolbarIconSrc="@{viewModel.loginUser.avatarPath}"
+                app:glideToolbarIconCenterCrop="@{true}"
+                app:glideToolbarIconCircularCrop="@{true}"
                 tools:ignore="RtlSymmetry" />
 
         </com.google.android.material.appbar.AppBarLayout>

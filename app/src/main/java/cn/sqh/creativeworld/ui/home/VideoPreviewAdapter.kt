@@ -1,5 +1,6 @@
 package cn.sqh.creativeworld.ui.home
 
+/*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +37,6 @@ class VideoPreviewAdapter(
         binding.clickListener = onClickListener
     }
 
-
-}
+}*/
 
 

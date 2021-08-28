@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import cn.sqh.creativeworld.R
+import cn.sqh.creativeworld.repository.old.UserRepository
 
 object AccountStore {
 

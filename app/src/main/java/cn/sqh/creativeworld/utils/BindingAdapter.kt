@@ -11,11 +11,13 @@ import android.view.WindowInsets
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.annotation.DrawableRes
 import androidx.core.view.updateLayoutParams
 import androidx.databinding.BindingAdapter
 import cn.sqh.creativeworld.R
-import cn.sqh.creativeworld.utils.GlideDrawableLoadListener
+import cn.sqh.creativeworld.ui.common.FoldableTextView
+import com.blankj.utilcode.util.LogUtils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.load.DataSource
@@ -24,6 +26,12 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.google.android.material.chip.Chip
 import com.google.android.material.elevation.ElevationOverlayProvider
+
+
+@BindingAdapter("ftv_text")
+fun FoldableTextView.bindFtvText(text: String?) {
+    setText(text)
+}
 
 @BindingAdapter(
     "popupElevationOverlay"
@@ -63,7 +71,7 @@ fun TextView.bindDrawables(
 }
 
 /**
- * 小图片的Glide
+ * Chip用的的Glide
  */
 @BindingAdapter(
     "glideChipIcon",
@@ -108,20 +116,108 @@ fun Chip.bindGlideChipSrc(
 }
 
 @BindingAdapter(
+    "glideToolbarIconSrc",
+    "glideToolbarIconCenterCrop",
+    "glideToolbarIconCircularCrop",
+    requireAll = false
+)
+fun Toolbar.bindGlideToolbarSrc(
+    url: String?,
+    centerCrop: Boolean = false,
+    circularCrop: Boolean = false
+) {
+    if (url == null) return
+
+    createGlideRequest(
+        context,
+        url,
+        centerCrop,
+        circularCrop
+    ).listener(object : RequestListener<Drawable> {
+        override fun onLoadFailed(
+            e: GlideException?,
+            model: Any?,
+            target: Target<Drawable>?,
+            isFirstResource: Boolean
+        ): Boolean = true
+
+        override fun onResourceReady(
+            resource: Drawable?,
+            model: Any?,
+            target: Target<Drawable>?,
+            dataSource: DataSource?,
+            isFirstResource: Boolean
+        ): Boolean {
+//            LogUtils.d("头出来了")
+            navigationIcon = resource
+            return true
+        }
+    }).submit(
+        resources.getDimensionPixelSize(R.dimen.common_profile_image_size),
+        resources.getDimensionPixelSize(R.dimen.common_profile_image_size)
+    )
+}
+
+@BindingAdapter(
+    "glideChipIconSrc",
+    "glideChipIconCenterCrop",
+    "glideChipIconCircularCrop",
+    requireAll = false
+)
+fun Chip.bindGlideChipSrc(
+    url: String?,
+    centerCrop: Boolean = false,
+    circularCrop: Boolean = false
+) {
+    if (url == null) return
+
+    createGlideRequest(
+        context,
+        url,
+        centerCrop,
+        circularCrop
+    ).listener(object : RequestListener<Drawable> {
+        override fun onLoadFailed(
+            e: GlideException?,
+            model: Any?,
+            target: Target<Drawable>?,
+            isFirstResource: Boolean
+        ): Boolean = true
+
+        override fun onResourceReady(
+            resource: Drawable?,
+            model: Any?,
+            target: Target<Drawable>?,
+            dataSource: DataSource?,
+            isFirstResource: Boolean
+        ): Boolean {
+            chipIcon = resource
+            return true
+        }
+    }).submit(
+        resources.getDimensionPixelSize(R.dimen.chip_icon_diameter),
+        resources.getDimensionPixelSize(R.dimen.chip_icon_diameter)
+    )
+}
+
+@BindingAdapter(
     "srcUrl",
     "circleCrop",
+    "centerCrop",
     "placeholder",
     "loadListener",
     requireAll = false
 )
 fun ImageView.bindSrcUrl(
-    url: String,
+    url: String?,//这个地方记得要用可空url，因为LiveData在处于loading或者error时传入的参数一般是空指针，避免断言异常
     circleCrop: Boolean,
+    centerCrop: Boolean,
     placeholder: Drawable?,
     loadListener: GlideDrawableLoadListener?
 ) {
     val request = Glide.with(this).load(url)
     if (circleCrop) request.circleCrop()
+    if (centerCrop) request.centerCrop()
     if (placeholder != null) request.placeholder(placeholder)
     if (loadListener != null) request.listener(loadListener)
     request.into(this)
@@ -147,6 +243,19 @@ fun ImageView.bindGlideSrc(
         circularCrop
     ).into(this)
 }
+
+private fun createGlideRequest(
+    context: Context,
+    url: String?,
+    centerCrop: Boolean,
+    circularCrop: Boolean
+): RequestBuilder<Drawable> {
+    val req = Glide.with(context).load(url)
+    if (centerCrop) req.centerCrop()
+    if (circularCrop) req.circleCrop()
+    return req
+}
+
 
 private fun createGlideRequest(
     context: Context,

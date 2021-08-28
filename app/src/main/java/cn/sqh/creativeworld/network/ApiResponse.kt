@@ -4,6 +4,9 @@ import com.blankj.utilcode.util.LogUtils
 import retrofit2.Response
 import java.util.regex.Pattern
 
+/**
+ * 老版的APIResponse，适用于线程通信的LiveData
+ */
 sealed class ApiResponse<T> {
     companion object {
         fun <T> create(error: Throwable): ApiErrorResponse<T> {

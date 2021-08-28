@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/upload"
+        android:drawable="@drawable/ic_upload_24"
+        android:state_activated="false"/>
+
+    <item
+        android:id="@+id/backup"
+        android:drawable="@drawable/ic_reply_all"
+        android:state_activated="true"/>
+
+    <transition
+        android:fromId="@id/upload"
+        android:toId="@id/backup"
+        android:drawable="@drawable/avd_upload_to_back"/>
+
+    <transition
+        android:fromId="@id/backup"
+        android:toId="@id/upload"
+        android:drawable="@drawable/avd_back_to_upload"/>
+
+</animated-selector>

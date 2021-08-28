@@ -9,7 +9,7 @@ import cn.sqh.creativeworld.R
 import cn.sqh.creativeworld.core.EmptyLiveData
 import cn.sqh.creativeworld.login.data.model.LoggingUser
 import cn.sqh.creativeworld.login.data.model.LoginFormState
-import cn.sqh.creativeworld.repository.UserRepository
+import cn.sqh.creativeworld.repository.old.UserRepository
 
 
 class LoginViewModel() : ViewModel() {

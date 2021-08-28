@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="cn.sqh.creativeworld.R" />
+
+        <variable
+            name="tweet"
+            type="cn.sqh.creativeworld.ui.tweets.data.TweetPreviewModel" />
+
+        <variable
+            name="clickListener"
+            type="cn.sqh.creativeworld.ui.tweets.TweetRecyclerViewAdapter.TweetViewClickListener" />
+
+
+    </data>
+
+    <FrameLayout
+        android:id="@+id/tweet_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/grid_0_5"
+        android:layout_marginVertical="@dimen/grid_0_25">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:elevation="@dimen/elevation_0"
+            android:focusable="true"
+            android:transitionName="@{@string/tweet_card_preview_transition_name(tweet.id)}"
+            android:onClick="@{(view)-> clickListener.onClickTweet(view, tweet.id)}"
+            app:cardCornerRadius="@dimen/grid_1"
+            app:cardPreventCornerOverlap="false">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/grid_2"
+                android:paddingBottom="@dimen/grid_2">
+
+                <ImageView
+                    android:id="@+id/uploader_profile_image_view"
+                    android:layout_width="@dimen/common_profile_image_size"
+                    android:layout_height="@dimen/common_profile_image_size"
+                    android:layout_marginStart="@dimen/grid_2"
+                    android:layout_marginTop="@dimen/grid_1"
+                    android:layout_marginEnd="@dimen/grid_2"
+                    app:circleCrop="@{true}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:placeholder="@{@drawable/ic_profile_placeholder}"
+                    app:srcCompat="@drawable/ic_profile_placeholder"
+                    app:srcUrl="@{tweet.profileUrl}" />
+
+                <TextView
+                    android:id="@+id/uploader_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_2"
+                    android:layout_marginTop="@dimen/grid_1"
+                    android:layout_marginEnd="@dimen/grid_2"
+                    android:maxLines="1"
+                    android:text="@{tweet.ownerName}"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/uploader_profile_image_view"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Zhang San" />
+
+                <TextView
+                    android:id="@+id/upload_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_2"
+                    android:layout_marginTop="@dimen/grid_1"
+                    android:layout_marginEnd="@dimen/grid_2"
+                    android:maxLines="1"
+                    android:text="@{tweet.uploadTime}"
+                    android:textAppearance="?attr/textAppearanceOverline"
+                    android:textColor="@color/sqh_gray_middle_alpha_087"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/uploader_profile_image_view"
+                    app:layout_constraintTop_toBottomOf="@id/uploader_name"
+                    tools:text="12 minutes ago" />
+
+
+                <TextView
+                    android:id="@+id/body_preview_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_2"
+                    android:layout_marginTop="@dimen/grid_1"
+                    android:layout_marginEnd="@dimen/grid_2"
+                    android:maxLines="2"
+                    android:paddingBottom="@dimen/grid_2"
+                    android:text="@{tweet.content}"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/upload_time"
+                    tools:text="Abababab ababa adada wedwdwada  daad  wd dhasuihdaudusahduiahsudihsaudihsadiuahdsadawd" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/attachment_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:layout_marginTop="@dimen/grid_2"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:overScrollMode="never"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    app:goneIf="@{!tweet.hasAttachments}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/body_preview_text_view" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/grid_0_5"
+                    android:text="@{tweet.forwardNumber}"
+                    app:drawableStartCompat="@drawable/ic_share_16"
+                    app:drawableTint="?attr/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.15"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/attachment_recycler_view"
+                    tools:text="324" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/grid_0_5"
+                    android:text="@{tweet.commentNumber}"
+                    app:drawableStartCompat="@drawable/ic_comment_16"
+                    app:drawableTint="?attr/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.50"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/attachment_recycler_view"
+                    tools:text="324" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/grid_0_5"
+                    android:text="@{tweet.recommendNumber}"
+                    app:drawableStartCompat="@drawable/ic_recommend_16"
+                    app:drawableTint="?attr/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.85"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/attachment_recycler_view"
+                    tools:text="324" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+</layout>

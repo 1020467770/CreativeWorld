@@ -8,6 +8,10 @@ import cn.sqh.creativeworld.core.AppExecutors
 import cn.sqh.creativeworld.core.data.Resource
 import com.blankj.utilcode.util.LogUtils
 
+/**
+ * 老版自写数据源，所有数据必须经过Room数据库才能转换成ResultType，在处理
+ * 分页数据时有很大的局限性
+ */
 abstract class NetworkBoundResource<ResultType, RequestType>(
     private val appExecutors: AppExecutors = AppExecutors
 ) {

@@ -5,9 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="currentUserAccount"
             type="cn.sqh.creativeworld.core.data.Account" />
+
+        <variable
+            name="userRepository"
+            type="cn.sqh.creativeworld.repository.old.UserRepository" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -55,9 +60,11 @@
                 android:padding="@dimen/grid_1"
                 android:layout_gravity="center|top"
                 android:foreground="?attr/actionBarItemBackground"
-                app:glideSrc="@{currentUserAccount.profile}"
-                app:glideCenterCrop="@{true}"
-                app:glideCircularCrop="@{true}"/>
+                android:scaleType="centerCrop"
+                app:circleCrop="@{true}"
+                app:placeholder="@{@drawable/ic_profile_placeholder}"
+                app:srcCompat="@drawable/ic_profile_placeholder"
+                app:srcUrl="@{userRepository.loggedInUser.user.avatarPath}"/>
 
             <!--前景-->
             <LinearLayout

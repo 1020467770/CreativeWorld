@@ -17,6 +17,7 @@
     <declare-styleable name="FoldableTextView">
         <attr name="ftv_text" format="string" />
         <attr name="defaultMaxLineCounts" format="integer" />
+        <attr name="ftv_textColor" format="reference|color" />
     </declare-styleable>
 
 </resources>

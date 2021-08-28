@@ -1,7 +1,14 @@
 <resources>
     <string name="app_name">CreativeWorld</string>
 
+    <!--DateTimeFormat-->
+    <string name="seconds_ago">%1$d s ago</string>
+    <string name="minutes_ago">%1$d min ago</string>
+    <string name="hours_ago">%1$d hours ago</string>
+    <string name="days_ago">%1$d days ago</string>
+
     <!--BottomAppBar-->
+    <string name="action_comment">Comment</string>
 
 
     <!--BottomNavigationDrawer-->
@@ -10,9 +17,6 @@
     <string name="navigation_upload_videos">MyVideos</string>
     <string name="navigation_community">Community</string>
 
-    <string name="email_card_transition_name">email_card_%1$s</string>
-    <string name="email_card_detail_transition_name">email_card_detail</string>
-
     <!--VideoDetailFragment-->
     <string name="video_card_transition_name" translatable="false">video_card_%1$s</string>
     <string name="video_detail_transition_name" translatable="false">video_detail_transition</string>
@@ -20,6 +24,8 @@
     <string name="copy_forbid_presentation">Unauthorized reproduction is prohibited</string>
     <string name="uploader_fans_number">%1$s Fans</string>
     <string name="uploader_videos_number">%1$s Videos</string>
+    <string name="empty_video_description">Description Empty!</string>
+
 
     <!--VideoBottomNavigationMenu-->
     <string name="menu_item_share">Share</string>
@@ -41,7 +47,29 @@
     <string name="register_failed">Register failed</string>
     <string name="register_success">Register succeed</string>
 
+    <!--NetworkStateItem-->
+    <string name="network_retry">Retry</string>
 
+    <!--TweetPreviewFragment-->
+    <string name="tweet_card_preview_transition_name" translatable="false">tweet_card_%1$s</string>
+
+    <!--TweetDetailFragment-->
+    <string name="tweet_card_detail_transition_name" translatable="false">tweet_card_detail</string>
+
+    <!--UploadVideoFragment-->
+    <string name="change_video_cover">Change a cover</string>
+    <string name="hint_change_video_title">VIDEO TITLE</string>
+    <string name="hint_change_video_desc">VIDEO DESCRIPTION</string>
+    <string name="select_complete">Selected</string>
+    <string name="action_upload">Upload</string>
+
+    <!--UserInterfaceFragment-->
+    <string name="follow_num">Follow</string>
+    <string name="fans_num">Fans</string>
+    <string name="beliked_num">Be Liked</string>
+
+    <!--CommentFragment-->
+    <string name="hint_action_comment">Comment</string>
 
 
 

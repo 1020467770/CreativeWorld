@@ -12,6 +12,7 @@
     <dimen name="grid_2">16dp</dimen>
     <dimen name="grid_3">24dp</dimen>
     <dimen name="grid_4">32dp</dimen>
+    <dimen name="grid_8">64dp</dimen>
 
     <!--HomePageToolBar-->
     <dimen name="top_tool_bar_min_height">60dp</dimen>
@@ -27,10 +28,8 @@
     <dimen name="navigation_drawer_profile_image_size_padded">32dp</dimen>
     <dimen name="navigation_drawer_menu_item_height">56dp</dimen>
 
-    <!--Email previews-->
-    <dimen name="email_sender_profile_image_size">42dp</dimen>
-    <dimen name="email_recipient_card_popup_elevation">6dp</dimen>
-    <dimen name="email_recipient_card_popup_elevation_compat">3dp</dimen>
+    <!--ProfileDefinition-->
+    <dimen name="common_profile_image_size">42dp</dimen>
 
     <!--HomeRecyclerView-->
     <integer name="home_grid_columns">2</integer>
@@ -40,4 +39,8 @@
     <dimen name="fragment_horizontal_margin">16dp</dimen>
     <dimen name="fragment_vertical_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+
+    <!--UploadingVideoFragment-->
+    <integer name="title_max_length">20</integer>
+    <integer name="desc_max_length">200</integer>
 </resources>

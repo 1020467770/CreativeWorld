@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tweets_recycler_view"
+        android:name="cn.sqh.creativeworld.ui.tweets.TweetsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/grid_2"
+        android:layout_marginRight="@dimen/grid_2"
+        android:paddingBottom="@dimen/bottom_app_bar_height"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:transitionGroup="true"
+        app:paddingTopSystemWindowInsets="@{true}"
+        app:paddingBottomSystemWindowInsets="@{true}"
+        tools:context=".ui.tweets.TweetsFragment"
+        tools:listitem="@layout/item_tweet_layout" />
+</layout>

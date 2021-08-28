@@ -23,7 +23,7 @@
             android:id="@+id/email_card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:transitionName="@string/email_card_detail_transition_name">
+            android:transitionName="abab">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/menu_item_constraint_layout"
@@ -86,8 +86,8 @@
 
                 <ImageView
                     android:id="@+id/sender_profile_image_view"
-                    android:layout_width="@dimen/email_sender_profile_image_size"
-                    android:layout_height="@dimen/email_sender_profile_image_size"
+                    android:layout_width="@dimen/common_profile_image_size"
+                    android:layout_height="@dimen/common_profile_image_size"
                     android:scaleType="centerCrop"
                     app:layout_constraintTop_toTopOf="@id/sender_text_view"
                     app:layout_constraintBottom_toBottomOf="@+id/recipient_text_view"

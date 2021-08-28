@@ -7,17 +7,14 @@
 
         <import type="cn.sqh.creativeworld.R" />
 
-        <import type="cn.sqh.creativeworld.core.data.Video" />
-
-        <import type="androidx.lifecycle.LiveData"/>
-
-        <import type="cn.sqh.creativeworld.core.data.Resource" />
 
         <variable
-            name="video"
-            type="LiveData&lt;Resource&lt;Video>>" />
+            name="viewModel"
+            type="cn.sqh.creativeworld.ui.videoDetail.VideoDetailViewModel" />
 
-
+        <variable
+            name="followListener"
+            type="cn.sqh.creativeworld.core.interfaces.FollowToUserListener" />
 
     </data>
 
@@ -25,6 +22,7 @@
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/colorPrimarySurface"
         android:transitionName="@string/video_detail_transition_name">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -84,13 +82,14 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="@drawable/profile_outline_clickable"
-                app:glideCenterCrop="@{true}"
-                app:glideCircularCrop="@{true}"
-                app:glideSrc="@{R.drawable.avatar_10}"
+                app:circleCrop="@{true}"
                 app:layout_constraintBottom_toBottomOf="@id/video_player"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/video_player" />
+                app:layout_constraintTop_toBottomOf="@id/video_player"
+                app:placeholder="@{@drawable/ic_profile_placeholder}"
+                app:srcCompat="@drawable/ic_profile_placeholder"
+                app:srcUrl="@{viewModel.videoLiveData.profileUrl}" />
 
             <TextView
                 android:id="@+id/tv_uploader_name"
@@ -98,15 +97,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/grid_0_5"
                 android:gravity="center"
-                android:text="@{video.data.uploader}"
+                android:text="@{viewModel.videoLiveData.uploader}"
                 android:textAppearance="?attr/textAppearanceSubtitle2"
-                android:textColor="?attr/colorPrimary"
+                android:textColor="?attr/colorOnPrimarySurface"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/video_uploader"
                 tools:text="zhangsan的屁屁" />
 
-            <FrameLayout
+            <!--<FrameLayout
                 android:id="@+id/sub_profile_area"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
@@ -128,13 +127,14 @@
                 app:layout_constraintBottom_toBottomOf="@+id/sub_profile_area"
                 app:layout_constraintStart_toEndOf="@id/sub_profile_area"
                 tools:text="zhangsan的屁屁" />
-
+-->
             <TextView
                 android:id="@+id/tv_fans_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/grid_2"
-                android:text="@{@string/uploader_fans_number(video.data.owner.fansCounts)}"
+                android:text="@{@string/uploader_fans_number(viewModel.videoLiveData.fansCounts)}"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_video_num"
                 tools:text="354粉丝" />
@@ -143,11 +143,12 @@
                 android:id="@+id/tv_video_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="@dimen/grid_1"
                 android:layout_marginTop="@dimen/grid_1"
-                android:text="@{@string/uploader_videos_number(video.data.owner.videoCounts)}"
+                android:text="@{@string/uploader_videos_number(viewModel.videoLiveData.videoCounts)}"
+                android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@+id/tv_fans_num"
-                app:layout_constraintTop_toBottomOf="@+id/sub_name_area"
+                app:layout_constraintTop_toBottomOf="@+id/video_uploader"
                 tools:text="16视频" />
 
 
@@ -155,18 +156,20 @@
                 android:id="@+id/ctv_follow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="@dimen/grid_1"
                 android:layout_marginBottom="@dimen/grid_1"
                 android:background="@drawable/action_follow_foreground"
                 android:clickable="true"
-                android:drawableStart="@drawable/asl_follow_unfollow"
+                android:drawablePadding="@dimen/grid_0_5"
                 android:focusable="true"
                 android:gravity="center"
+                android:onClick="@{(view)->followListener.onFollowAction(view, viewModel.videoLiveData.id)}"
                 android:paddingHorizontal="@dimen/grid_1"
                 android:paddingVertical="@dimen/grid_0_5"
                 android:text="@string/action_follow_user"
                 android:textColor="@color/color_action_follow_checked_textview"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_video_num"
+                app:drawableStartCompat="@drawable/asl_follow_unfollow"
+                app:layout_constraintBottom_toTopOf="@+id/tab_navigation"
                 app:layout_constraintEnd_toEndOf="parent" />
 
 
@@ -175,9 +178,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:layout_marginTop="@dimen/grid_1"
+                android:background="?colorSecondaryVariant"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_video_num"
+                app:layout_constraintTop_toBottomOf="@+id/tv_uploader_name"
                 app:tabGravity="start"
                 app:tabIndicatorColor="#ff678f"
                 app:tabIndicatorFullWidth="false"
@@ -202,4 +206,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
 </layout>

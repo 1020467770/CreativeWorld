@@ -17,50 +17,48 @@ typealias UserId = Long
         Index("username")
     ]
 )
-data class User(
+data class User @JvmOverloads constructor(
 
     @Expose
     @SerializedName("userEmail")
-    var email: String,
+    var email: String = "",
 
     @PrimaryKey(autoGenerate = false)
     @Expose
     @SerializedName("userId")
-    var uid: UserId,
+    var uid: UserId = 0,
 
     @Expose
     @SerializedName("userAvatarPath")
-    var avatarPath: String,
+    var avatarPath: String = "",
 
     @Expose
     @SerializedName("userFansNumber")
-    var fansCounts: Int,
+    var fansCounts: Int = 0,
 
     @Expose
     @SerializedName("userFollowNumber")
-    var followCounts: Int,
+    var followCounts: Int = 0,
 
     @Expose
     @SerializedName("userName")
-    var username: String,
+    var username: String = "",
 
 
     @Expose
     @JsonAdapter(GsonDateTypeConverter::class)
     @SerializedName("userRegisterDate")
-    var registerDate: Date,
+    var registerDate: Date ,
 
     @Expose
     @SerializedName("userSelfDescribe")
-    var selfDescribe: String,
+    var selfDescribe: String = "",
 
     @Expose
     @SerializedName("userTweetsNum")
-    var forwardCounts: Int,
+    var tweetsCounts: Int = 0,//推文数
 
     @Expose
     @SerializedName("userVideosNum")
-    var videoCounts: Int
-) {
-
-}
+    var videoCounts: Int = 0
+)

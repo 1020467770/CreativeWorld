@@ -5,10 +5,10 @@
     <!-- Base application theme. -->
     <style name="Theme.CreativeWorld" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/sqh_blue_700</item>
-        <item name="colorPrimaryVariant">@color/sqh_blue_800</item>
-        <item name="colorSecondary">@color/sqh_orange_500</item>
-        <item name="colorSecondaryVariant">@color/sqh_orange_400</item>
+        <item name="colorPrimary">@color/sqh_color_group_3_b</item>
+        <item name="colorPrimaryVariant">@color/sqh_color_group_3_a</item>
+        <item name="colorSecondary">@color/sqh_color_group_1_b</item>
+        <item name="colorSecondaryVariant">@color/sqh_color_group_3_c</item>
 
         <item name="android:colorBackground">@color/sqh_blue_50</item>
         <item name="colorSurface">@color/sqh_white_50</item>
@@ -16,7 +16,8 @@
         <item name="colorPrimarySurfaceVariant">?attr/colorPrimaryVariant</item>
         <item name="colorError">@color/sqh_red_400</item>
 
-        <item name="colorOnPrimary">@color/sqh_white_50</item>
+        <item name="colorOnPrimary">@color/sqh_color_group_3_d</item>
+        <item name="colorOnPrimarySurface">@color/sqh_white_50</item>
         <item name="colorOnSecondary">@color/sqh_black_900</item>
         <item name="colorOnBackground">@color/sqh_black_900</item>
         <item name="colorOnSurface">@color/sqh_black_900</item>

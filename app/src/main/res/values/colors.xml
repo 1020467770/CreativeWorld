@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
 
     <!--Color palette-->
     <color name="sqh_white_50">#ffffff</color>
@@ -36,14 +37,37 @@
     <color name="sqh_white_50_alpha_060">#99ffffff</color>
 
     <color name="sqh_blue_50_alpha_060">#99eef0f2</color>
+    <color name="sqh_blue">#03A9F4</color>
 
     <color name="sqh_gray_middle_alpha_030">#4DAAAAAA</color>
     <color name="sqh_gray_middle_alpha_060">#99AAAAAA</color>
     <color name="sqh_gray_middle_alpha_087">#DEAAAAAA</color>
 
+    <color name="sqh_black_900_alpha_008">#14000000</color>
     <color name="sqh_black_900_alpha_020">#33000000</color>
     <color name="sqh_black_900_alpha_087">#de000000</color>
     <color name="sqh_black_900_alpha_060">#99000000</color>
 
     <color name="nav_bar">@color/sqh_black_900_alpha_020</color>
+    <color name="sqh_yellow_alpha_060">#99FDFFAB</color>
+    <color name="sqh_yellow_alpha_087">#DEFDFFAB</color>
+
+    <!--配色组-->
+    <!--1-->
+    <color name="sqh_color_group_1_a">#A8E6CF</color>
+    <color name="sqh_color_group_1_b">#FDFFAB</color>
+    <color name="sqh_color_group_1_c">#FFD3B6</color>
+    <color name="sqh_color_group_1_d">#FFAAA5</color>
+
+    <!--2-->
+    <color name="sqh_color_group_2_a">#8EF6E4</color>
+    <color name="sqh_color_group_2_b">#9896F1</color>
+    <color name="sqh_color_group_2_c">#D59BF6</color>
+    <color name="sqh_color_group_2_d">#EDB1F1</color>
+
+    <!--3-->
+    <color name="sqh_color_group_3_a">#1FAB89</color>
+    <color name="sqh_color_group_3_b">#62D2A2</color>
+    <color name="sqh_color_group_3_c">#9DF3C4</color>
+    <color name="sqh_color_group_3_d">#D7FBE8</color>
 </resources>
