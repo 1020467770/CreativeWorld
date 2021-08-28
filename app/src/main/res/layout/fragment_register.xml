@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="cn.sqh.creativeworld.R" />
 
         <variable
             name="registerUser"
@@ -29,13 +30,15 @@
 
         <ImageView
             android:id="@+id/ic_app"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/common_profile_image_size"
+            android:layout_height="@dimen/common_profile_image_size"
             android:layout_marginTop="@dimen/grid_4"
-            app:layout_constraintEnd_toStartOf="@+id/email_text_input_layout_outlined"
-            app:layout_constraintStart_toEndOf="@+id/email_text_input_layout_outlined"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/ic_launcher_round" />
+            app:glideCenterCrop="@{true}"
+            app:glideCircularCrop="@{true}"
+            app:glideSrc="@{R.mipmap.ic_launcher_round}" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
