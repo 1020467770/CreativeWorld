@@ -5,7 +5,7 @@
 
 ### 一个试图想向bilibili看齐的demo。
 #### 现在仅供自己未来复习使用。
-#### 涉及到的较新的技术：Hilt-Dagger、Flow、Navigation、spring动画、paging2、TabLayoutMediator、Material Design动画
+#### 涉及到的较新的技术：Hilt-Dagger、Flow、Navigation、spring动画、paging3、TabLayoutMediator、Material Design动画
 #### 可能会有挺长一段时间不会碰安卓了，而且时间紧任务重，为了尽可能地多学一点jitpack，就把很多重复的业务逻辑代码放弃了。就留下了这些供自己以后复习的代码。
 还有WorkManager的内容可能会在之后有空的时候加进去。
 #### 涉及到的知识点，忘了一定要去项目里看一眼：
